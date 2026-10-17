@@ -1,0 +1,805 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adopt a Pet | Paws & Hearts</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #fff8f3;
+            color: #49352f;
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 2px 10px #0000000d;
+        }
+
+        .logo {
+            color: #e76f51;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #49352f;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #e76f51;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 55px 20px;
+            background: linear-gradient(135deg, #ffe1d2, #fff0e7);
+        }
+
+        .hero h1 {
+            color: #c6533b;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 17px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .adoption-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .pet-card,
+        .form-card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 5px 20px #0000000c;
+        }
+
+        .pet-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 18px;
+        }
+
+        .pet-card h2,
+        .form-card h2 {
+            color: #c6533b;
+            margin-bottom: 12px;
+        }
+
+        .pet-details {
+            background: #fff3eb;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 18px;
+        }
+
+        .pet-details p {
+            margin: 8px 0;
+            overflow-wrap: anywhere;
+        }
+
+        .pet-description {
+            color: #78655e;
+        }
+
+        .form-card > p {
+            color: #78655e;
+            margin-bottom: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e4d3c9;
+            border-radius: 9px;
+            font-family: inherit;
+            font-size: 15px;
+            background: #fffdfb;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 2px solid #f3a58e;
+            border-color: #e76f51;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 18px 0;
+        }
+
+        .checkbox-group input {
+            width: auto;
+            margin-top: 6px;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #e76f51;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #c6533b;
+        }
+
+        .notice {
+            margin-top: 20px;
+            padding: 14px;
+            background: #fff3eb;
+            border-left: 4px solid #e76f51;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            background: #e8f7e9;
+            color: #245b2b;
+            border-radius: 10px;
+        }
+
+        .message h3 {
+            margin-bottom: 8px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #c6533b;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 25px;
+            background: #49352f;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 750px) {
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .adoption-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .pet-card img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🐾 Paws & Hearts</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="pets.html">Our Pets</a>
+        <a href="rescue.html">Rescue Stories</a>
+        <a href="questions.html">FAQs</a>
+        <a href="feedback.html">Feedback</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Find Your Forever Friend ❤️</h1>
+    <p>Every Paw Deserves Love.</p>
+</section>
+
+<main class="container">
+
+    <div class="adoption-layout">
+
+        <!-- PET INFORMATION -->
+
+        <section class="pet-card">
+
+            <img
+                id="petImage"
+                src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80"
+                alt="Pet available for adoption">
+
+            <h2 id="petName">Choose Your Forever Friend ❤️</h2>
+
+            <p class="pet-description" id="petDescription">
+                Complete the application to begin your adoption journey.
+            </p>
+
+            <div class="pet-details">
+
+                <p>
+                    <strong>🐾 Type:</strong>
+                    <span id="petType">Select a pet</span>
+                </p>
+
+                <p>
+                    <strong>🏷️ Breed:</strong>
+                    <span id="petBreed">—</span>
+                </p>
+
+                <p>
+                    <strong>🎂 Age:</strong>
+                    <span id="petAge">—</span>
+                </p>
+
+                <p>
+                    <strong>🐕 Gender:</strong>
+                    <span id="petGender">—</span>
+                </p>
+
+                <p>
+                    <strong>❤️ Adoption Fee:</strong>
+                    <span id="petPrice">—</span>
+                </p>
+
+            </div>
+
+            <div class="notice">
+                <strong>A lifelong commitment!</strong>
+                Please ensure that you can provide your pet with food,
+                shelter, veterinary care, safety, and affection.
+            </div>
+
+            <a href="pets.html" class="back-link">
+                ← Explore More Pets
+            </a>
+
+        </section>
+
+        <!-- ADOPTION FORM -->
+
+        <section class="form-card">
+
+            <h2>Adoption Application 📝</h2>
+
+            <p>
+                Tell us about yourself and the loving home you can
+                provide for your future companion.
+            </p>
+
+            <form id="adoptionForm">
+
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        minlength="2"
+                        maxlength="80"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        pattern="[0-9+\-\s()]{7,20}"
+                        title="Enter a valid phone number"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City / Location *</label>
+
+                    <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        placeholder="Enter your city"
+                        maxlength="100"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="housing">Living Arrangement *</label>
+
+                    <select id="housing" name="housing" required>
+                        <option value="">Select an option</option>
+                        <option value="house">Independent House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="rented">Rented Accommodation</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Previous Pet Experience *</label>
+
+                    <select id="experience" name="experience" required>
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes, I have cared for pets</option>
+                        <option value="no">No, this is my first pet</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="reason">Why Do You Want to Adopt? *</label>
+
+                    <textarea
+                        id="reason"
+                        name="reason"
+                        placeholder="Tell us why you want to adopt this pet..."
+                        minlength="10"
+                        maxlength="1000"
+                        required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="carePlan">Your Pet Care Plan *</label>
+
+                    <textarea
+                        id="carePlan"
+                        name="carePlan"
+                        placeholder="Explain how you will provide food, exercise, safety and veterinary care..."
+                        minlength="10"
+                        maxlength="1000"
+                        required></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input
+                        type="checkbox"
+                        id="agreement"
+                        name="agreement"
+                        required>
+
+                    <label for="agreement">
+                        I understand that pet adoption is a long-term
+                        responsibility and agree to provide proper care. *
+                    </label>
+                </div>
+
+                <button type="submit" class="btn">
+                    Submit Adoption Application ❤️
+                </button>
+
+            </form>
+
+            <div
+                class="message"
+                id="successMessage"
+                role="status"
+                aria-live="polite">
+
+                <h3>🎉 Application Completed!</h3>
+
+                <p id="confirmationText"></p>
+
+                <p>
+                    This is a college project demonstration.
+                    The application has not been sent to a real shelter
+                    or saved to a database.
+                </p>
+
+                <button
+                    type="button"
+                    class="btn"
+                    style="margin-top: 15px;"
+                    onclick="window.location.href='pets.html'">
+                    Explore More Pets
+                </button>
+
+            </div>
+
+            <div class="notice">
+                <strong>Demo notice:</strong>
+                This form demonstrates front-end validation.
+                It does not send applications to a real animal shelter.
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>🐾 Paws & Hearts — Every Paw Deserves Love.</p>
+    <p>Giving every animal a chance at a happy home. ❤️</p>
+</footer>
+
+<script>
+    // All 20 sample pets.
+
+    const pets = {
+
+        cat01: {
+            name: "Milo",
+            type: "Adult Cat",
+            breed: "Persian",
+            age: "2 years",
+            gender: "Male",
+            price: 2500,
+            image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=800&q=80"
+        },
+
+        cat02: {
+            name: "Luna",
+            type: "Adult Cat",
+            breed: "Siamese",
+            age: "3 years",
+            gender: "Female",
+            price: 2200,
+            image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80"
+        },
+
+        cat03: {
+            name: "Oliver",
+            type: "Adult Cat",
+            breed: "British Shorthair",
+            age: "2 years",
+            gender: "Male",
+            price: 2800,
+            image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=800&q=80"
+        },
+
+        cat04: {
+            name: "Cleo",
+            type: "Adult Cat",
+            breed: "Indian Domestic Shorthair",
+            age: "2 years",
+            gender: "Female",
+            price: 1500,
+            image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=800&q=80"
+        },
+
+        kitten01: {
+            name: "Misty",
+            type: "Kitten",
+            breed: "Persian Mix",
+            age: "3 months",
+            gender: "Female",
+            price: 1800,
+            image: "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=800&q=80"
+        },
+
+        kitten02: {
+            name: "Peanut",
+            type: "Kitten",
+            breed: "Indian Domestic Shorthair",
+            age: "2 months",
+            gender: "Male",
+            price: 1000,
+            image: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=800&q=80"
+        },
+
+        kitten03: {
+            name: "Snowball",
+            type: "Kitten",
+            breed: "White Domestic Shorthair",
+            age: "3 months",
+            gender: "Female",
+            price: 1200,
+            image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=800&q=80"
+        },
+
+        kitten04: {
+            name: "Simba",
+            type: "Kitten",
+            breed: "Tabby",
+            age: "4 months",
+            gender: "Male",
+            price: 1400,
+            image: "https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=800&q=80"
+        },
+
+        kitten05: {
+            name: "Coco",
+            type: "Kitten",
+            breed: "Calico Domestic Shorthair",
+            age: "3 months",
+            gender: "Female",
+            price: 1600,
+            image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=800&q=80"
+        },
+
+        kitten06: {
+            name: "Teddy",
+            type: "Kitten",
+            breed: "Maine Coon Mix",
+            age: "4 months",
+            gender: "Male",
+            price: 2400,
+            image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=800&q=80"
+        },
+
+        dog01: {
+            name: "Bruno",
+            type: "Adult Dog",
+            breed: "Labrador Retriever",
+            age: "2 years",
+            gender: "Male",
+            price: 2800,
+            image: "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=80"
+        },
+
+        dog02: {
+            name: "Daisy",
+            type: "Adult Dog",
+            breed: "Beagle",
+            age: "3 years",
+            gender: "Female",
+            price: 2500,
+            image: "https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&w=800&q=80"
+        },
+
+        dog03: {
+            name: "Max",
+            type: "Adult Dog",
+            breed: "Indie",
+            age: "4 years",
+            gender: "Male",
+            price: 1000,
+            image: "https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=800&q=80"
+        },
+
+        dog04: {
+            name: "Bella",
+            type: "Adult Dog",
+            breed: "Cocker Spaniel",
+            age: "3 years",
+            gender: "Female",
+            price: 2900,
+            image: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=800&q=80"
+        },
+
+        dog05: {
+            name: "Charlie",
+            type: "Adult Dog",
+            breed: "Indian Pariah Dog",
+            age: "2 years",
+            gender: "Male",
+            price: 800,
+            image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80"
+        },
+
+        puppy01: {
+            name: "Rocky",
+            type: "Puppy",
+            breed: "Golden Retriever Mix",
+            age: "4 months",
+            gender: "Male",
+            price: 2500,
+            image: "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=80"
+        },
+
+        puppy02: {
+            name: "Daisy",
+            type: "Puppy",
+            breed: "Beagle Mix",
+            age: "3 months",
+            gender: "Female",
+            price: 1800,
+            image: "https://images.unsplash.com/photo-1505628346881-b72b27e84530?auto=format&fit=crop&w=800&q=80"
+        },
+
+        puppy03: {
+            name: "Leo",
+            type: "Puppy",
+            breed: "German Shepherd Mix",
+            age: "4 months",
+            gender: "Male",
+            price: 2700,
+            image: "https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&w=800&q=80"
+        },
+
+        puppy04: {
+            name: "Milo",
+            type: "Puppy",
+            breed: "Pug Mix",
+            age: "3 months",
+            gender: "Male",
+            price: 2200,
+            image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80"
+        },
+
+        puppy05: {
+            name: "Rosie",
+            type: "Puppy",
+            breed: "Indie Mix",
+            age: "4 months",
+            gender: "Female",
+            price: 1200,
+            image: "https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=800&q=80"
+        }
+
+    };
+
+    // Read the selected pet from the URL.
+
+    const params = new URLSearchParams(window.location.search);
+    const petId = params.get("id");
+    const pet = pets[petId];
+
+    // Display pet details.
+
+    const petName = document.getElementById("petName");
+    const petType = document.getElementById("petType");
+    const petBreed = document.getElementById("petBreed");
+    const petAge = document.getElementById("petAge");
+    const petGender = document.getElementById("petGender");
+    const petPrice = document.getElementById("petPrice");
+    const petImage = document.getElementById("petImage");
+    const petDescription = document.getElementById("petDescription");
+
+    if (pet) {
+
+        petName.textContent = "Meet " + pet.name + " ❤️";
+        petType.textContent = pet.type;
+        petBreed.textContent = pet.breed;
+        petAge.textContent = pet.age;
+        petGender.textContent = pet.gender;
+
+        petPrice.textContent =
+            "₹" + pet.price.toLocaleString("en-IN");
+
+        petImage.src = pet.image;
+        petImage.alt = pet.name;
+
+        petDescription.textContent =
+            "Meet " + pet.name + "! Complete the application below to begin your adoption journey.";
+
+        document.title = "Adopt " + pet.name + " | Paws & Hearts";
+
+    } else {
+
+        petName.textContent = "Choose Your Forever Friend ❤️";
+
+        petType.textContent = "No pet selected";
+        petBreed.textContent = "—";
+        petAge.textContent = "—";
+        petGender.textContent = "—";
+        petPrice.textContent = "—";
+
+        petDescription.textContent =
+            "Please visit Our Pets and click Adopt on the pet you would like to choose.";
+
+    }
+
+    // Handle the adoption form.
+
+    document.getElementById("adoptionForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            if (!this.checkValidity()) {
+                this.reportValidity();
+                return;
+            }
+
+            const applicantName =
+                document.getElementById("fullName").value.trim();
+
+            const selectedPet = pet ? pet.name : null;
+
+            if (!selectedPet) {
+                alert("Please select a pet from the Our Pets page first.");
+                return;
+            }
+
+            document.getElementById("confirmationText").textContent =
+                "Thank you, " + applicantName +
+                "! Your demonstration application for " +
+                selectedPet + " has been completed successfully.";
+
+            document.getElementById("successMessage").style.display = "block";
+
+            document.getElementById("successMessage")
+                .scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+        });
+
+</script>
+
+</body>
+</html>

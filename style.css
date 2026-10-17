@@ -1,0 +1,326 @@
+/* General page styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background-color: #fff8f5;
+    color: #59443b;
+    line-height: 1.6;
+}
+
+/* =========================================
+   HOMEPAGE IMAGE
+   Displays your original Paws & Hearts image
+========================================= */
+
+.homepage-container {
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: #fff8f5;
+}
+
+.homepage-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Transparent clickable areas over the homepage image */
+.homepage-link {
+    position: absolute;
+    display: block;
+    z-index: 2;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+}
+
+/* Keyboard accessibility */
+.homepage-link:focus-visible {
+    outline: 3px solid #d96b86;
+    outline-offset: 2px;
+}
+
+/* =========================================
+   NAVIGATION BAR
+========================================= */
+
+header {
+    background-color: #ffffff;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+    color: #e77b91;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #59443b;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #e77b91;
+}
+
+/* =========================================
+   WELCOME SECTION
+========================================= */
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #ffe3e9, #fff0dc);
+}
+
+.hero h1 {
+    font-size: 46px;
+    color: #d96b86;
+    margin-bottom: 18px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    background-color: #e77b91;
+    color: white;
+    padding: 13px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background-color: #cb5e78;
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
+
+.section-title {
+    text-align: center;
+    font-size: 34px;
+    color: #d96b86;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    text-align: center;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+/* =========================================
+   PET GALLERY
+========================================= */
+
+.pets {
+    padding: 65px 7%;
+}
+
+.pet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.pet-card {
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+}
+
+.pet-card:hover {
+    transform: translateY(-6px);
+}
+
+.pet-card img {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.pet-info {
+    padding: 22px;
+}
+
+.pet-info h3 {
+    color: #d96b86;
+    margin-bottom: 10px;
+    font-size: 23px;
+}
+
+.pet-info p {
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+/* =========================================
+   RESCUE SECTION
+========================================= */
+
+.rescue {
+    background-color: #fff0dc;
+    padding: 65px 7%;
+    text-align: center;
+}
+
+.rescue p {
+    max-width: 750px;
+    margin: 15px auto 25px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   ADOPTION FORM
+========================================= */
+
+.adoption {
+    padding: 65px 7%;
+}
+
+.adoption-form {
+    max-width: 650px;
+    margin: auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.adoption-form label {
+    display: block;
+    margin: 16px 0 8px;
+    font-weight: bold;
+}
+
+.adoption-form input,
+.adoption-form select,
+.adoption-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e8c9ce;
+    border-radius: 10px;
+    font: inherit;
+    background-color: #fffdfc;
+}
+
+.adoption-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.adoption-form .button {
+    margin-top: 22px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    background-color: #59443b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    line-height: 1.8;
+}
+
+/* =========================================
+   MOBILE-FRIENDLY LAYOUT
+========================================= */
+
+@media (max-width: 800px) {
+    header {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .pet-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .homepage-image {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 520px) {
+    .pet-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .section-title {
+        font-size: 27px;
+    }
+
+    .adoption-form {
+        padding: 20px;
+    }
+}
+.memory-image {
+    width: 100%;
+    max-width: 400px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto;
+}

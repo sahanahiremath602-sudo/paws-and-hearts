@@ -1,0 +1,1057 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rescue Stories | Paws & Hearts</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #b75b45;
+            --accent: #e98269;
+            --background: #fff8f2;
+            --soft: #fff0e8;
+            --text: #49352d;
+            --green: #34784a;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        header {
+            background: #ffb6a0;
+            padding: 22px 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 5px 0 15px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .page-heading {
+            text-align: center;
+            padding: 35px 15px 10px;
+        }
+
+        .page-heading h2 {
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .page-heading p {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .story-container {
+            max-width: 950px;
+            margin: 25px auto 50px;
+            padding: 30px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 22px rgba(80, 50, 35, 0.10);
+        }
+
+        .pet-title {
+            text-align: center;
+            color: var(--primary);
+            font-size: 32px;
+            margin: 0;
+        }
+
+        .pet-subtitle {
+            text-align: center;
+            color: #80685d;
+            margin-top: 5px;
+        }
+
+        .main-photo {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            background: var(--soft);
+            margin: 20px 0;
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0 25px;
+        }
+
+        .badge {
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            background: var(--soft);
+        }
+
+        .status-badge {
+            color: var(--green);
+            background: #e5f5e9;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .detail {
+            background: var(--soft);
+            border-radius: 12px;
+            padding: 15px;
+            overflow-wrap: anywhere;
+        }
+
+        .detail span {
+            display: block;
+            font-size: 13px;
+            color: #80685d;
+        }
+
+        .detail strong {
+            font-size: 16px;
+        }
+
+        .story-section {
+            border-top: 1px solid #f0ded5;
+            padding: 20px 0;
+        }
+
+        .story-section h3 {
+            color: var(--primary);
+            margin: 0 0 12px;
+            font-size: 23px;
+        }
+
+        .story-section p {
+            margin: 8px 0;
+            white-space: pre-line;
+        }
+
+        .condition-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .condition-card {
+            border: 1px solid #f0ded5;
+            border-radius: 13px;
+            padding: 14px;
+            background: #fffdfb;
+        }
+
+        .condition-card img {
+            width: 100%;
+            height: 145px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: var(--soft);
+        }
+
+        .condition-card h4 {
+            margin: 10px 0 4px;
+            color: var(--primary);
+        }
+
+        .condition-card p {
+            font-size: 14px;
+        }
+
+        .timeline {
+            border-left: 3px solid #e98269;
+            padding-left: 20px;
+            margin: 20px 0 10px 8px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 22px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -28px;
+            top: 7px;
+            width: 12px;
+            height: 12px;
+            background: #e98269;
+            border-radius: 50%;
+        }
+
+        .timeline-item h4 {
+            margin: 0;
+            color: var(--primary);
+        }
+
+        .notice {
+            background: #fff5d9;
+            border-left: 4px solid #e5b44f;
+            padding: 13px 16px;
+            font-size: 13px;
+            border-radius: 7px;
+            margin-top: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 12px 23px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .adopt-button {
+            background: var(--accent);
+            color: white;
+        }
+
+        .back-button {
+            background: var(--soft);
+            color: var(--text);
+            border: 1px solid var(--accent);
+        }
+
+        .button:hover {
+            opacity: 0.85;
+        }
+
+        .error-message {
+            text-align: center;
+            padding: 30px 10px;
+        }
+
+        footer {
+            background: #ffb6a0;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        @media (max-width: 650px) {
+            .story-container {
+                margin: 20px 12px 35px;
+                padding: 20px;
+            }
+
+            .details-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .condition-list {
+                grid-template-columns: 1fr;
+            }
+
+            .pet-title,
+            .page-heading h2 {
+                font-size: 27px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🐾 Paws & Hearts</h1>
+    <p>Every Paw Deserves Love ❤️</p>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="pets.html">Available Pets</a>
+        <a href="adopt.html">Adopt</a>
+        <a href="feedback.html">Feedback</a>
+    </nav>
+</header>
+
+<section class="page-heading">
+    <h2>Every Rescue Has a Story ❤️</h2>
+    <p>
+        Learn about each animal's fictional rescue journey,
+        physical condition, treatment, recovery and hopes for a loving home.
+    </p>
+</section>
+
+<main class="story-container" id="storyContainer">
+    <p style="text-align:center">Loading rescue story...</p>
+</main>
+
+<footer>
+    <h3>🐾 Paws & Hearts</h3>
+    <p>Every Paw Deserves Love ❤️</p>
+    <p>Rescue. Recover. Love. Repeat.</p>
+</footer>
+
+<script>
+const pets = {
+
+    cat01: {
+        name: "Milo",
+        type: "Adult Cat",
+        breed: "Persian",
+        age: "2 years",
+        gender: "Male",
+        price: 2500,
+        image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=800",
+        condition: "Skin irritation and a matted coat",
+        severity: "Moderate in this fictional case",
+        symptoms: "Matted fur, irritated skin and discomfort while being groomed.",
+        treatment: "Veterinary skin examination, gentle coat care and treatment according to the veterinarian's findings.",
+        story: "Milo was found near a residential building. His coat was heavily matted, and patches of irritated skin made him uncomfortable. He was taken to a veterinary clinic for examination. His fictional case plan included gentle grooming and appropriate skin care. After settling into a clean, comfortable shelter, Milo gradually became more relaxed around his caregivers.",
+        timeline: [
+            ["Rescue day", "Milo was brought to safety and examined by a veterinarian."],
+            ["Recovery period", "His coat was cared for gently, and his skin was monitored."],
+            ["Current progress", "He is eating regularly, resting comfortably and becoming more trusting."]
+        ],
+        status: "Improving in this fictional case",
+        images: [
+            ["Coat condition", "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400", "Illustrative cat coat image; not Milo's actual injury."],
+            ["Gentle care", "https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=400", "Illustrative cat-care image."]
+        ]
+    },
+
+    cat02: {
+        name: "Luna",
+        type: "Adult Cat",
+        breed: "Siamese",
+        age: "3 years",
+        gender: "Female",
+        price: 2200,
+        image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800",
+        condition: "Watery eye and irritation",
+        severity: "Needs veterinary assessment",
+        symptoms: "Watery discharge from one eye and sensitivity around the face.",
+        treatment: "Veterinary eye examination and prescribed treatment if required; the eye must not be treated with unprescribed medicines.",
+        story: "Luna was discovered outdoors with a watery eye and visible facial discomfort. A volunteer arranged a veterinary examination because eye problems can worsen quickly. Her fictional treatment plan included monitoring the eye and following the veterinarian's instructions. Luna was kept in a clean, quiet space while her progress was observed.",
+        timeline: [
+            ["Rescue day", "Luna was brought indoors and her eye was assessed."],
+            ["Treatment", "Her caregiver followed the veterinarian's instructions and monitored discharge."],
+            ["Current progress", "She is eating and resting; her eye still requires monitoring in this example."]
+        ],
+        status: "Under observation in this fictional case",
+        images: [
+            ["Eye condition illustration", "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400", "Illustrative cat image; not a clinical photograph of Luna."],
+            ["Quiet recovery", "https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=400", "Illustrative cat image."]
+        ]
+    },
+
+    cat03: {
+        name: "Oliver",
+        type: "Adult Cat",
+        breed: "British Shorthair",
+        age: "2 years",
+        gender: "Male",
+        price: 2800,
+        image: "https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=800",
+        condition: "Minor paw wound",
+        severity: "Mild in this fictional case",
+        symptoms: "Small cut on a paw and temporary discomfort when walking.",
+        treatment: "Veterinary wound assessment, appropriate cleaning and a protective dressing if prescribed.",
+        story: "Oliver was found hiding near a quiet lane. He was walking cautiously and repeatedly lifting one paw. A volunteer arranged a veterinary examination. In this fictional case, the veterinarian found a minor paw wound and recommended appropriate wound care and rest. Oliver gradually became more comfortable moving around his recovery area.",
+        timeline: [
+            ["Rescue day", "Oliver was safely transported for a paw examination."],
+            ["Recovery period", "His paw was monitored and activity was limited as advised."],
+            ["Current progress", "He is moving more comfortably and returning to gentle play."]
+        ],
+        status: "Recovering in this fictional case",
+        images: [
+            ["Paw-care illustration", "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400", "Illustrative cat image, not an actual paw-wound photograph."],
+            ["Rest and comfort", "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400", "Illustrative cat image."]
+        ]
+    },
+
+    cat04: {
+        name: "Cleo",
+        type: "Adult Cat",
+        breed: "Indian Domestic Shorthair",
+        age: "2 years",
+        gender: "Female",
+        price: 1500,
+        image: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=800",
+        condition: "Dehydration and low body condition",
+        severity: "Requires veterinary assessment",
+        symptoms: "Tired appearance, reduced activity and signs that may indicate dehydration.",
+        treatment: "Veterinary assessment, appropriate fluids if required and a monitored feeding plan.",
+        story: "Cleo was found searching for food near a group of houses. She appeared tired and had a poor body condition. A volunteer brought her to a veterinary clinic, where her hydration and nutritional needs could be assessed. Her fictional recovery plan involved appropriate fluids when indicated, regular suitable meals and monitoring her weight and energy.",
+        timeline: [
+            ["Rescue day", "Cleo was moved to safety for a health assessment."],
+            ["Recovery period", "Her food intake, hydration and energy were monitored."],
+            ["Current progress", "She is eating more consistently and showing greater interest in her surroundings."]
+        ],
+        status: "Improving; veterinary follow-up needed in this fictional case",
+        images: [
+            ["Body condition illustration", "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400", "Illustrative cat image, not a clinical assessment of Cleo."],
+            ["Resting safely", "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400", "Illustrative cat image."]
+        ]
+    },
+
+    kitten01: {
+        name: "Misty",
+        type: "Kitten",
+        breed: "Persian Mix",
+        age: "3 months",
+        gender: "Female",
+        price: 1800,
+        image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=800",
+        condition: "Eye discharge and weakness",
+        severity: "Requires prompt veterinary assessment",
+        symptoms: "Watery eyes, reduced activity and difficulty settling.",
+        treatment: "Veterinary examination, age-appropriate nutrition and prescribed eye treatment if indicated.",
+        story: "Misty was found in a sheltered corner with watery eyes and little energy. Because young kittens can deteriorate quickly, a volunteer arranged prompt veterinary care. Her fictional care plan included monitoring her temperature, eating and drinking, and following any prescribed eye treatment. She was kept warm and comfortable while regaining her energy.",
+        timeline: [
+            ["Rescue day", "Misty received a veterinary assessment and a safe resting place."],
+            ["Recovery period", "Her eyes, appetite and activity were monitored."],
+            ["Current progress", "She is more curious and playful, with continued monitoring in this example."]
+        ],
+        status: "Improving under observation in this fictional case",
+        images: [
+            ["Eye-care illustration", "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400", "Illustrative kitten image, not Misty's actual condition."],
+            ["Safe resting place", "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400", "Illustrative cat image."]
+        ]
+    },
+
+    kitten02: {
+        name: "Peanut",
+        type: "Kitten",
+        breed: "Indian Domestic Shorthair",
+        age: "2 months",
+        gender: "Male",
+        price: 1000,
+        image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=800",
+        condition: "Low body weight and weakness",
+        severity: "Requires veterinary assessment",
+        symptoms: "Small body size, low energy and difficulty maintaining normal activity.",
+        treatment: "Veterinary assessment, appropriate kitten nutrition and monitoring of weight and hydration.",
+        story: "Peanut was discovered alone near a garden. He looked smaller than expected for his age and was less active than a healthy kitten should be. A volunteer arranged a veterinary check. His fictional recovery plan involved suitable kitten food, frequent monitored meals and a warm, safe environment.",
+        timeline: [
+            ["Rescue day", "Peanut was examined and his nutritional needs were assessed."],
+            ["Recovery period", "His weight, appetite and energy were monitored."],
+            ["Current progress", "He is more active and showing interest in toys."]
+        ],
+        status: "Gaining strength in this fictional case",
+        images: [
+            ["Body condition illustration", "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400", "Illustrative kitten image, not a clinical photograph of Peanut."],
+            ["Nutrition and rest", "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=400", "Illustrative cat image."]
+        ]
+    },
+
+    kitten03: {
+        name: "Snowball",
+        type: "Kitten",
+        breed: "White Domestic Shorthair",
+        age: "3 months",
+        gender: "Female",
+        price: 1200,
+        image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=800",
+        condition: "Flea infestation and skin irritation",
+        severity: "Needs veterinary assessment",
+        symptoms: "Frequent scratching and irritated skin.",
+        treatment: "Veterinarian-approved parasite treatment suitable for her age and weight; bedding and surroundings are cleaned.",
+        story: "Snowball was found outside repeatedly scratching her skin. A volunteer suspected parasites and arranged a veterinary examination. Her fictional care plan involved age-appropriate parasite treatment recommended by the veterinarian and cleaning her bedding. The caregiver monitored her skin and avoided products that were not approved for kittens.",
+        timeline: [
+            ["Rescue day", "Snowball received a skin and parasite assessment."],
+            ["Recovery period", "Prescribed treatment and environmental cleaning were carried out."],
+            ["Current progress", "She is scratching less and resting more comfortably in this example."]
+        ],
+        status: "Improving under observation in this fictional case",
+        images: [
+            ["Skin-care illustration", "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400", "Illustrative cat image, not an actual photograph of parasites."],
+            ["Clean bedding", "https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=400", "Illustrative cat image."]
+        ]
+    },
+
+    kitten04: {
+        name: "Simba",
+        type: "Kitten",
+        breed: "Tabby",
+        age: "4 months",
+        gender: "Male",
+        price: 1400,
+        image: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=800",
+        condition: "Minor leg injury",
+        severity: "Requires veterinary assessment",
+        symptoms: "Limping and reluctance to jump.",
+        treatment: "Veterinary examination to rule out fracture; rest and treatment according to the findings.",
+        story: "Simba was found hiding near a building during a rainy day. He was reluctant to put full weight on one leg. A volunteer arranged a veterinary examination to rule out a fracture or other serious injury. His fictional care plan included rest and activity restriction while his mobility was monitored.",
+        timeline: [
+            ["Rescue day", "Simba was transported safely for an examination."],
+            ["Recovery period", "Jumping and rough play were restricted as advised."],
+            ["Current progress", "He is moving more confidently, but veterinary clearance is required before unrestricted activity."]
+        ],
+        status: "Recovering; veterinary clearance required in this fictional case",
+        images: [
+            ["Mobility illustration", "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400", "Illustrative kitten image, not a photograph of Simba's leg."],
+            ["Rest and recovery", "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=400", "Illustrative cat image."]
+        ]
+    },
+
+    kitten05: {
+        name: "Coco",
+        type: "Kitten",
+        breed: "Calico Domestic Shorthair",
+        age: "3 months",
+        gender: "Female",
+        price: 1600,
+        image: "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=800",
+        condition: "Ear irritation",
+        severity: "Needs veterinary assessment",
+        symptoms: "Frequent head shaking and scratching around the ears.",
+        treatment: "Veterinary examination to identify the cause; prescribed ear treatment only when indicated.",
+        story: "Coco was found near a neighbourhood shop. She frequently shook her head and scratched around her ears. A volunteer arranged a veterinary examination because ear irritation can have several causes. Her fictional care plan included checking for parasites or infection and following the veterinarian's instructions.",
+        timeline: [
+            ["Rescue day", "Coco's ears were examined by a veterinarian."],
+            ["Recovery period", "Her symptoms were monitored and any prescribed care was followed."],
+            ["Current progress", "She is more comfortable and playing normally in this example."]
+        ],
+        status: "Under observation in this fictional case",
+        images: [
+            ["Ear-care illustration", "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400", "Illustrative cat image, not an actual photograph of Coco's ears."],
+            ["Comfort and care", "https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?w=400", "Illustrative cat image."]
+        ]
+    },
+
+    kitten06: {
+        name: "Teddy",
+        type: "Kitten",
+        breed: "Maine Coon Mix",
+        age: "4 months",
+        gender: "Male",
+        price: 2400,
+        image: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=800",
+        condition: "Minor skin wound",
+        severity: "Mild in this fictional case",
+        symptoms: "Small superficial scratch and tenderness near the shoulder.",
+        treatment: "Veterinary wound assessment and appropriate cleaning; deeper wounds require prompt professional care.",
+        story: "Teddy was brought to a rescue volunteer after a small scratch was noticed near his shoulder. The volunteer arranged an examination to make sure there was no deeper injury. His fictional treatment plan involved appropriate wound care and monitoring for swelling, discharge or increasing discomfort.",
+        timeline: [
+            ["Rescue day", "Teddy's scratch was examined."],
+            ["Recovery period", "The area was monitored and cared for as directed."],
+            ["Current progress", "He is playing more comfortably and the wound is described as healing in this fictional case."]
+        ],
+        status: "Recovering in this fictional case",
+        images: [
+            ["Skin-wound illustration", "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?w=400", "Illustrative cat image, not Teddy's actual wound."],
+            ["Recovery time", "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=400", "Illustrative cat image."]
+        ]
+    },
+
+    dog01: {
+        name: "Bruno",
+        type: "Adult Dog",
+        breed: "Labrador Retriever",
+        age: "2 years",
+        gender: "Male",
+        price: 2800,
+        image: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800",
+        condition: "Cut paw and limping",
+        severity: "Requires veterinary assessment",
+        symptoms: "Cut on the front paw, limping and reluctance to put weight on it.",
+        treatment: "Veterinary examination, wound care and protective dressing or medication as prescribed.",
+        story: "Bruno was discovered beside a busy road with a cut on his front paw. He was limping and seemed frightened by nearby traffic. A rescue volunteer moved him away from danger and arranged veterinary care. In this fictional case, the veterinarian assessed the wound and recommended suitable cleaning, protection and rest. Bruno gradually became more comfortable walking.",
+        timeline: [
+            ["Rescue day", "Bruno was moved away from traffic and taken for a paw examination."],
+            ["Recovery period", "His wound was monitored and activity was restricted as advised."],
+            ["Current progress", "He is eating well and walking more comfortably in this fictional case."]
+        ],
+        status: "Recovering; veterinary follow-up required in this fictional case",
+        images: [
+            ["Paw injury illustration", "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400", "Illustrative dog image, not a clinical photograph of Bruno's paw."],
+            ["Rest after treatment", "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400", "Illustrative dog image."]
+        ]
+    },
+
+    dog02: {
+        name: "Daisy",
+        type: "Adult Dog",
+        breed: "Beagle",
+        age: "3 years",
+        gender: "Female",
+        price: 2500,
+        image: "https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=800",
+        condition: "Skin irritation and hair loss",
+        severity: "Needs veterinary assessment",
+        symptoms: "Scratching and small patches of missing fur.",
+        treatment: "Veterinary skin examination to identify the cause and treatment appropriate to the diagnosis.",
+        story: "Daisy was found near a park with irritated skin and several small patches of missing fur. A volunteer arranged a veterinary appointment because parasites, allergies and infections can cause similar symptoms. Her fictional treatment plan involved identifying the cause before beginning suitable care. Her skin was monitored as her comfort improved.",
+        timeline: [
+            ["Rescue day", "Daisy was examined for skin irritation."],
+            ["Recovery period", "Her prescribed care and skin condition were monitored."],
+            ["Current progress", "She is scratching less and enjoying walks in this example."]
+        ],
+        status: "Improving under observation in this fictional case",
+        images: [
+            ["Skin-condition illustration", "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400", "Illustrative dog image, not a photograph of Daisy's skin."],
+            ["Comfort after care", "https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=400", "Illustrative dog image."]
+        ]
+    },
+
+    dog03: {
+        name: "Max",
+        type: "Adult Dog",
+        breed: "Indie",
+        age: "4 years",
+        gender: "Male",
+        price: 1000,
+        image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800",
+        condition: "Low body weight and weakness",
+        severity: "Requires veterinary assessment",
+        symptoms: "Visible loss of body condition and low energy.",
+        treatment: "Veterinary assessment, parasite checks where appropriate and a gradual feeding plan.",
+        story: "Max was found searching for food in a residential area. He appeared thin and tired, so a volunteer arranged veterinary care. His fictional plan included checking for underlying illness, assessing hydration and introducing an appropriate diet gradually. Caregivers monitored his appetite, weight and energy rather than simply giving him large meals.",
+        timeline: [
+            ["Rescue day", "Max received a health and nutritional assessment."],
+            ["Recovery period", "His meals, weight and activity were monitored."],
+            ["Current progress", "He has more energy and is eating consistently in this fictional case."]
+        ],
+        status: "Regaining strength in this fictional case",
+        images: [
+            ["Body condition illustration", "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=400", "Illustrative dog image, not a verified assessment of Max."],
+            ["Nutrition and rest", "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400", "Illustrative dog image."]
+        ]
+    },
+
+    dog04: {
+        name: "Bella",
+        type: "Adult Dog",
+        breed: "Cocker Spaniel",
+        age: "3 years",
+        gender: "Female",
+        price: 2900,
+        image: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800",
+        condition: "Ear inflammation",
+        severity: "Needs veterinary assessment",
+        symptoms: "Head shaking, ear scratching and discomfort when the ear is touched.",
+        treatment: "Veterinary ear examination and prescribed treatment based on the cause.",
+        story: "Bella was found near a residential lane, repeatedly shaking her head and scratching one ear. A volunteer arranged a veterinary examination. Her fictional care plan involved identifying whether inflammation, parasites or infection was responsible and following the prescribed treatment. Her ears were monitored for discharge, odour and continued discomfort.",
+        timeline: [
+            ["Rescue day", "Bella was examined for ear discomfort."],
+            ["Recovery period", "Prescribed treatment and follow-up checks were arranged."],
+            ["Current progress", "She is more comfortable and less distracted by her ears in this example."]
+        ],
+        status: "Under veterinary observation in this fictional case",
+        images: [
+            ["Ear-condition illustration", "https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=400", "Illustrative dog image, not Bella's actual ear."],
+            ["Care and rest", "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400", "Illustrative dog image."]
+        ]
+    },
+
+    dog05: {
+        name: "Charlie",
+        type: "Adult Dog",
+        breed: "Indian Pariah Dog",
+        age: "2 years",
+        gender: "Male",
+        price: 800,
+        image: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=800",
+        condition: "Healing superficial wound",
+        severity: "Requires veterinary assessment",
+        symptoms: "Small wound on the side of the body and tenderness around the area.",
+        treatment: "Veterinary assessment, suitable wound care and monitoring for infection.",
+        story: "Charlie was found near a market area with a small wound on his side. A volunteer brought him somewhere safe and arranged a veterinary examination. His fictional treatment plan included wound care and checks for swelling, pain or discharge. With rest and appropriate attention, Charlie became more comfortable and began moving around normally.",
+        timeline: [
+            ["Rescue day", "Charlie was examined and the wound was assessed."],
+            ["Recovery period", "The wound was monitored for signs of infection."],
+            ["Current progress", "He is more active and the wound is described as healing in this fictional case."]
+        ],
+        status: "Recovering in this fictional case",
+        images: [
+            ["Wound-care illustration", "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400", "Illustrative dog image, not Charlie's actual wound."],
+            ["Comfortable rest", "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=400", "Illustrative dog image."]
+        ]
+    },
+
+    puppy01: {
+        name: "Rocky",
+        type: "Puppy",
+        breed: "Golden Retriever Mix",
+        age: "4 months",
+        gender: "Male",
+        price: 2500,
+        image: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800",
+        condition: "Small paw abrasion",
+        severity: "Requires veterinary assessment",
+        symptoms: "Superficial scrape and temporary tenderness while walking.",
+        treatment: "Veterinary assessment and appropriate cleaning; rest and monitoring as advised.",
+        story: "Rocky was found near a quiet street with a scraped paw. A volunteer arranged a veterinary examination to make sure the injury was not deeper than it appeared. His fictional care plan included suitable wound care and temporary limits on rough play. Because he is a puppy, his caregiver also monitored his appetite, energy and comfort closely.",
+        timeline: [
+            ["Rescue day", "Rocky received an examination and a safe place to rest."],
+            ["Recovery period", "His paw was monitored while rough play was restricted."],
+            ["Current progress", "He is walking more comfortably and showing his playful personality."]
+        ],
+        status: "Recovering in this fictional case",
+        images: [
+            ["Paw-care illustration", "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400", "Illustrative dog image, not Rocky's actual paw."],
+            ["Rest and recovery", "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400", "Illustrative dog image."]
+        ]
+    },
+
+    puppy02: {
+        name: "Daisy",
+        type: "Puppy",
+        breed: "Beagle Mix",
+        age: "3 months",
+        gender: "Female",
+        price: 1800,
+        image: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800",
+        condition: "Flea irritation",
+        severity: "Needs veterinary assessment",
+        symptoms: "Scratching, restlessness and irritated skin.",
+        treatment: "Age- and weight-appropriate parasite treatment selected by a veterinarian and cleaning of bedding.",
+        story: "Daisy was found alone and appeared uncomfortable because of frequent scratching. A volunteer arranged a veterinary check to assess possible parasites and other skin problems. Her fictional care plan involved a safe, veterinarian-approved parasite treatment and cleaning her sleeping area. Her skin and behaviour were monitored as she became more comfortable.",
+        timeline: [
+            ["Rescue day", "Daisy received a skin and parasite assessment."],
+            ["Recovery period", "Prescribed care was followed and bedding was cleaned."],
+            ["Current progress", "She is resting better and scratching less in this fictional case."]
+        ],
+        status: "Improving under observation in this fictional case",
+        images: [
+            ["Skin-care illustration", "https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=400", "Illustrative dog image, not a photograph of fleas."],
+            ["Clean recovery space", "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400", "Illustrative dog image."]
+        ]
+    },
+
+    puppy03: {
+        name: "Leo",
+        type: "Puppy",
+        breed: "German Shepherd Mix",
+        age: "4 months",
+        gender: "Male",
+        price: 2700,
+        image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800",
+        condition: "Limping after a leg injury",
+        severity: "Requires veterinary assessment",
+        symptoms: "Limping and reluctance to put weight on one leg.",
+        treatment: "Prompt veterinary examination to rule out fracture or joint injury; activity restriction as advised.",
+        story: "Leo was found alone near a group of houses. He was limping and hesitant to walk normally. A volunteer arranged prompt veterinary care because leg injuries in puppies need careful assessment. His fictional recovery plan involved restricting jumping and rough play while the veterinarian monitored his mobility.",
+        timeline: [
+            ["Rescue day", "Leo was transported safely for a leg examination."],
+            ["Recovery period", "His activity was limited and his movement was monitored."],
+            ["Current progress", "He is more comfortable, but unrestricted play requires veterinary clearance in this example."]
+        ],
+        status: "Recovering; veterinary follow-up required in this fictional case",
+        images: [
+            ["Mobility illustration", "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=400", "Illustrative dog image, not Leo's actual leg injury."],
+            ["Rest during recovery", "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400", "Illustrative dog image."]
+        ]
+    },
+
+    puppy04: {
+        name: "Milo",
+        type: "Puppy",
+        breed: "Pug Mix",
+        age: "3 months",
+        gender: "Male",
+        price: 2200,
+        image: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=800",
+        condition: "Loose stools and dehydration risk",
+        severity: "Requires prompt veterinary assessment",
+        symptoms: "Loose stools, low energy and reduced interest in food.",
+        treatment: "Prompt veterinary assessment, hydration support when indicated and monitoring for infectious illness.",
+        story: "Milo was brought to a rescue volunteer after appearing tired and having loose stools. Because young puppies can become dehydrated quickly, he was taken for veterinary assessment. His fictional care plan involved monitoring hydration, appetite and stool changes, and following the veterinarian's advice. He was kept in a clean space and observed closely.",
+        timeline: [
+            ["Rescue day", "Milo received a veterinary assessment for digestive symptoms."],
+            ["Recovery period", "His hydration, appetite and stool changes were monitored."],
+            ["Current progress", "He is more alert and eating better in this fictional example, with continued observation."]
+        ],
+        status: "Under observation in this fictional case",
+        images: [
+            ["Recovery-care illustration", "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400", "Illustrative puppy image, not a clinical photograph."],
+            ["Rest and observation", "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=400", "Illustrative dog image."]
+        ]
+    },
+
+    puppy05: {
+        name: "Rosie",
+        type: "Puppy",
+        breed: "Indie Mix",
+        age: "4 months",
+        gender: "Female",
+        price: 1200,
+        image: "https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=800",
+        condition: "Skin irritation and poor coat condition",
+        severity: "Needs veterinary assessment",
+        symptoms: "Dry skin, a dull coat and frequent scratching.",
+        treatment: "Veterinary skin examination, appropriate nutrition and prescribed treatment according to the cause.",
+        story: "Rosie was found outdoors with irritated skin and a dull coat. A volunteer arranged a veterinary examination to identify the cause instead of assuming that the problem was only nutritional. Her fictional care plan included appropriate food, skin monitoring and any treatment prescribed by the veterinarian.",
+        timeline: [
+            ["Rescue day", "Rosie received a skin and general health examination."],
+            ["Recovery period", "Her skin, coat and appetite were monitored."],
+            ["Current progress", "She is more comfortable and more interested in playing in this fictional case."]
+        ],
+        status: "Improving under observation in this fictional case",
+        images: [
+            ["Coat-care illustration", "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400", "Illustrative dog image, not Rosie's actual skin condition."],
+            ["Comfort and recovery", "https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=400", "Illustrative dog image."]
+        ]
+    }
+};
+
+const container = document.getElementById("storyContainer");
+const petId = new URLSearchParams(window.location.search).get("id");
+const pet = pets[petId];
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+}
+
+function renderStory(pet) {
+    const name = escapeHTML(pet.name);
+
+    document.title = name + "'s Rescue Story | Paws & Hearts";
+
+    container.innerHTML = `
+        <h2 class="pet-title">❤️ ${name}'s Rescue Story</h2>
+
+        <p class="pet-subtitle">
+            Every paw has a past. Every heart deserves a chance.
+        </p>
+
+        <img
+            class="main-photo"
+            src="${escapeHTML(pet.image)}"
+            alt="${name}"
+        >
+
+        <div class="status-row">
+            <span class="badge">${escapeHTML(pet.type)}</span>
+            <span class="badge status-badge">
+                ${escapeHTML(pet.status)}
+            </span>
+        </div>
+
+        <div class="details-grid">
+            <div class="detail">
+                <span>Pet Name</span>
+                <strong>${name}</strong>
+            </div>
+
+            <div class="detail">
+                <span>Breed</span>
+                <strong>${escapeHTML(pet.breed)}</strong>
+            </div>
+
+            <div class="detail">
+                <span>Age</span>
+                <strong>${escapeHTML(pet.age)}</strong>
+            </div>
+
+            <div class="detail">
+                <span>Gender</span>
+                <strong>${escapeHTML(pet.gender)}</strong>
+            </div>
+
+            <div class="detail">
+                <span>Adoption Fee</span>
+                <strong>₹${Number(pet.price).toLocaleString("en-IN")}</strong>
+            </div>
+
+            <div class="detail">
+                <span>Physical Condition</span>
+                <strong>${escapeHTML(pet.condition)}</strong>
+            </div>
+        </div>
+
+        <section class="story-section">
+            <h3>💔 1. The Rescue</h3>
+            <p>${escapeHTML(pet.story)}</p>
+        </section>
+
+        <section class="story-section">
+            <h3>🩺 2. Physical Condition and Injuries</h3>
+
+            <p>
+                <strong>Condition:</strong>
+                ${escapeHTML(pet.condition)}
+            </p>
+
+            <p>
+                <strong>Severity in this fictional case:</strong>
+                ${escapeHTML(pet.severity)}
+            </p>
+
+            <p>
+                <strong>Observed signs:</strong>
+                ${escapeHTML(pet.symptoms)}
+            </p>
+
+            <div class="condition-list">
+                ${pet.images.map(item => `
+                    <article class="condition-card">
+                        <img
+                            src="${escapeHTML(item[1])}"
+                            alt="${escapeHTML(item[0])}"
+                            loading="lazy"
+                        >
+                        <h4>${escapeHTML(item[0])}</h4>
+                        <p>${escapeHTML(item[2])}</p>
+                    </article>
+                `).join("")}
+            </div>
+
+            <div class="notice">
+                These pictures are illustrative animal photographs, not
+                verified images of the pet's actual injury or medical condition.
+            </div>
+        </section>
+
+        <section class="story-section">
+            <h3>💊 3. Treatment and Care</h3>
+            <p>${escapeHTML(pet.treatment)}</p>
+
+            <p>
+                The fictional rescue team also provides a clean resting
+                area, suitable food, fresh water, gentle handling and
+                veterinary follow-up according to the pet's needs.
+            </p>
+        </section>
+
+        <section class="story-section">
+            <h3>📅 4. Recovery Journey</h3>
+
+            <div class="timeline">
+                ${pet.timeline.map(item => `
+                    <div class="timeline-item">
+                        <h4>${escapeHTML(item[0])}</h4>
+                        <p>${escapeHTML(item[1])}</p>
+                    </div>
+                `).join("")}
+            </div>
+        </section>
+
+        <section class="story-section">
+            <h3>❤️ 5. How ${name} Is Doing Now</h3>
+
+            <p>
+                <strong>Current status:</strong>
+                ${escapeHTML(pet.status)}
+            </p>
+
+            <p>
+                <strong>Care required:</strong>
+                ${escapeHTML(pet.treatment)}
+            </p>
+
+            <p>
+                Before adoption, the rescue team should confirm the pet's
+                actual medical status, vaccination and parasite-control
+                records, and whether any continuing treatment is needed.
+            </p>
+        </section>
+
+        <section class="story-section">
+            <h3>🏡 6. Give ${name} a Loving Home</h3>
+
+            <p>
+                Adopting an animal means accepting responsibility for
+                food, veterinary care, safety, companionship and lifelong
+                wellbeing. Please consider the pet's recovery needs
+                before making an adoption decision.
+            </p>
+
+            <div class="action-buttons">
+                <a class="button adopt-button"
+                   href="adopt.html?id=${encodeURIComponent(petId)}">
+                    ❤️ Adopt ${name}
+                </a>
+
+                <a class="button back-button" href="pets.html">
+                    ← Back to All Pets
+                </a>
+            </div>
+        </section>
+
+        <div class="notice">
+            <strong>College project demonstration:</strong>
+            All rescue histories, injuries, treatment plans and current
+            statuses on this page are fictional sample data. The images
+            are illustrative and are not evidence of actual medical
+            conditions. Real animals require assessment by a veterinarian.
+        </div>
+    `;
+}
+
+if (pet) {
+    renderStory(pet);
+} else {
+    container.innerHTML = `
+        <div class="error-message">
+            <h2>🐾 Choose a Pet's Story</h2>
+            <p>
+                Select any pet from our collection to view its individual
+                rescue story, physical condition and recovery journey.
+            </p>
+
+            <div class="action-buttons">
+                <a class="button adopt-button" href="pets.html">
+                    Meet All 20 Pets ❤️
+                </a>
+            </div>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,986 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feedback | Paws & Hearts</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #b75b45;
+            --accent: #e98269;
+            --background: #fff8f2;
+            --soft: #fff0e8;
+            --text: #49352d;
+            --muted: #80685d;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #ffb6a0;
+            padding: 22px 7%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 5px 0 15px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 45px 20px;
+            background: linear-gradient(
+                135deg,
+                #fff0e8,
+                #ffe0d4
+            );
+        }
+
+        .hero .icon {
+            font-size: 55px;
+            margin-bottom: 8px;
+        }
+
+        .hero h2 {
+            color: var(--primary);
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: var(--muted);
+        }
+
+        /* MAIN */
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto 60px;
+            padding: 0 20px;
+        }
+
+        .feedback-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 22px rgba(80, 50, 35, 0.10);
+        }
+
+        .feedback-card h3 {
+            color: var(--primary);
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .intro {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        /* FORM */
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #e6cfc5;
+            border-radius: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            background: #fffdfb;
+            color: var(--text);
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(233, 130, 105, 0.13);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .required {
+            color: #c0392b;
+        }
+
+        .hint {
+            display: block;
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        /* STAR RATING */
+
+        .rating-box {
+            background: var(--soft);
+            padding: 18px;
+            border-radius: 12px;
+        }
+
+        .stars {
+            display: flex;
+            gap: 8px;
+            margin: 8px 0;
+        }
+
+        .star {
+            border: none;
+            background: transparent;
+            color: #d5c6bf;
+            font-size: 36px;
+            cursor: pointer;
+            transition: 0.2s;
+            padding: 0;
+        }
+
+        .star:hover {
+            transform: scale(1.12);
+        }
+
+        .star.selected {
+            color: #ffb52e;
+        }
+
+        #ratingText {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        /* CHECKBOX */
+
+        .checkbox-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checkbox-row input {
+            width: auto;
+            margin-top: 7px;
+        }
+
+        .checkbox-row label {
+            font-weight: normal;
+            margin: 0;
+        }
+
+        /* BUTTONS */
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .button {
+            border: none;
+            border-radius: 30px;
+            padding: 13px 25px;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-button {
+            background: var(--accent);
+            color: white;
+            flex: 1;
+        }
+
+        .submit-button:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .reset-button {
+            background: var(--soft);
+            color: var(--text);
+        }
+
+        .reset-button:hover {
+            background: #f8d8ca;
+        }
+
+        /* SUCCESS MESSAGE */
+
+        .success-message {
+            display: none;
+            background: #e6f7e9;
+            border: 1px solid #b7e4c0;
+            color: #245d32;
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .success-message h3 {
+            color: #245d32;
+            margin-bottom: 8px;
+        }
+
+        .success-icon {
+            font-size: 45px;
+        }
+
+        /* PRIVACY NOTE */
+
+        .privacy-note {
+            background: #fff5d9;
+            border-left: 4px solid #e5b44f;
+            padding: 15px;
+            border-radius: 7px;
+            font-size: 13px;
+            margin-top: 25px;
+            color: #725a2d;
+        }
+
+        /* BOTTOM CARD */
+
+        .bottom-card {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 30px;
+            background: #ffe5da;
+            border-radius: 18px;
+        }
+
+        .bottom-card h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .bottom-card p {
+            margin-bottom: 18px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #ffb6a0;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        footer h3 {
+            margin-bottom: 5px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .hero h2 {
+                font-size: 29px;
+            }
+
+            .container {
+                margin-top: 25px;
+            }
+
+            .feedback-card {
+                padding: 23px 18px;
+            }
+
+            .feedback-card h3 {
+                font-size: 22px;
+            }
+
+            .star {
+                font-size: 32px;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+            .button-row .button {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>🐾 Paws & Hearts</h1>
+
+        <p>Every Paw Deserves Love ❤️</p>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="pets.html">Available Pets</a>
+            <a href="rescue.html">Rescue Stories</a>
+            <a href="questions.html">FAQs</a>
+            <a href="adopt.html">Adopt</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="icon">💌</div>
+
+        <h2>We'd Love Your Feedback!</h2>
+
+        <p>
+            Your thoughts help us improve Paws & Hearts.
+            Tell us what you liked, what we can improve,
+            and how we can make the pet adoption experience better.
+        </p>
+
+    </section>
+
+
+    <!-- FEEDBACK FORM -->
+
+    <main class="container">
+
+        <section class="feedback-card">
+
+            <h3>Share Your Experience 🐾</h3>
+
+            <p class="intro">
+                Fill out the form below and let us know what you think!
+            </p>
+
+
+            <form id="feedbackForm">
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Your Name <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        minlength="2"
+                        maxlength="60"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        maxlength="120"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <span class="hint">
+                        This demonstration form does not send emails.
+                    </span>
+
+                </div>
+
+
+                <!-- VISITOR TYPE -->
+
+                <div class="form-group">
+
+                    <label for="visitorType">
+                        Which best describes you?
+                    </label>
+
+                    <select id="visitorType" name="visitorType">
+
+                        <option value="">Select an option</option>
+
+                        <option value="Potential Adopter">
+                            Potential Adopter
+                        </option>
+
+                        <option value="Pet Owner">
+                            Pet Owner
+                        </option>
+
+                        <option value="Animal Lover">
+                            Animal Lover
+                        </option>
+
+                        <option value="Student">
+                            Student
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- RATING -->
+
+                <div class="form-group">
+
+                    <label>
+                        How would you rate our website?
+                        <span class="required">*</span>
+                    </label>
+
+                    <div class="rating-box">
+
+                        <div
+                            class="stars"
+                            id="stars"
+                            role="group"
+                            aria-label="Website rating"
+                        >
+
+                            <button
+                                type="button"
+                                class="star"
+                                data-rating="1"
+                                aria-label="1 star"
+                                aria-pressed="false"
+                            >★</button>
+
+                            <button
+                                type="button"
+                                class="star"
+                                data-rating="2"
+                                aria-label="2 stars"
+                                aria-pressed="false"
+                            >★</button>
+
+                            <button
+                                type="button"
+                                class="star"
+                                data-rating="3"
+                                aria-label="3 stars"
+                                aria-pressed="false"
+                            >★</button>
+
+                            <button
+                                type="button"
+                                class="star"
+                                data-rating="4"
+                                aria-label="4 stars"
+                                aria-pressed="false"
+                            >★</button>
+
+                            <button
+                                type="button"
+                                class="star"
+                                data-rating="5"
+                                aria-label="5 stars"
+                                aria-pressed="false"
+                            >★</button>
+
+                        </div>
+
+                        <p id="ratingText" aria-live="polite">
+                            Select your rating from 1 to 5 stars.
+                        </p>
+
+                        <input
+                            type="hidden"
+                            id="rating"
+                            name="rating"
+                            value=""
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- FAVOURITE FEATURE -->
+
+                <div class="form-group">
+
+                    <label for="favouriteFeature">
+                        Which feature did you like most?
+                    </label>
+
+                    <select
+                        id="favouriteFeature"
+                        name="favouriteFeature"
+                    >
+
+                        <option value="">Select a feature</option>
+
+                        <option value="Pet Listings">
+                            Pet Listings
+                        </option>
+
+                        <option value="Rescue Stories">
+                            Rescue Stories
+                        </option>
+
+                        <option value="Adoption Form">
+                            Adoption Form
+                        </option>
+
+                        <option value="Frequently Asked Questions">
+                            Frequently Asked Questions
+                        </option>
+
+                        <option value="Website Design">
+                            Website Design
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- COMMENTS -->
+
+                <div class="form-group">
+
+                    <label for="comments">
+                        Your Feedback <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        id="comments"
+                        name="comments"
+                        placeholder="Tell us what you liked or what we can improve..."
+                        minlength="5"
+                        maxlength="1000"
+                        required
+                    ></textarea>
+
+                    <span class="hint">
+                        Minimum 5 characters and maximum 1,000 characters.
+                    </span>
+
+                </div>
+
+
+                <!-- SUGGESTIONS -->
+
+                <div class="form-group">
+
+                    <label for="suggestions">
+                        Suggestions for Improvement
+                    </label>
+
+                    <textarea
+                        id="suggestions"
+                        name="suggestions"
+                        placeholder="Share any additional suggestions..."
+                        maxlength="1000"
+                        style="min-height: 100px;"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- RECOMMENDATION -->
+
+                <div class="form-group">
+
+                    <label for="recommend">
+                        Would you recommend our website?
+                    </label>
+
+                    <select id="recommend" name="recommend">
+
+                        <option value="">Choose an answer</option>
+
+                        <option value="Definitely">
+                            Definitely!
+                        </option>
+
+                        <option value="Maybe">
+                            Maybe
+                        </option>
+
+                        <option value="No">
+                            Not at the moment
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- CONSENT -->
+
+                <div class="form-group checkbox-row">
+
+                    <input
+                        type="checkbox"
+                        id="consent"
+                        name="consent"
+                    >
+
+                    <label for="consent">
+                        I understand that this is a college project
+                        demonstration and that submitting this form
+                        displays a confirmation message only.
+                    </label>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="button-row">
+
+                    <button
+                        type="submit"
+                        class="button submit-button"
+                    >
+                        Submit Feedback ❤️
+                    </button>
+
+                    <button
+                        type="reset"
+                        class="button reset-button"
+                    >
+                        Clear Form
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- SUCCESS MESSAGE -->
+
+            <div
+                class="success-message"
+                id="successMessage"
+                role="status"
+                aria-live="polite"
+            >
+
+                <div class="success-icon">🎉🐾</div>
+
+                <h3>Thank You for Your Feedback!</h3>
+
+                <p id="thankYouText">
+                    Your feedback is valuable to us.
+                </p>
+
+                <p>
+                    Your support helps spread kindness and awareness
+                    about responsible pet adoption.
+                </p>
+
+            </div>
+
+
+            <!-- DEMONSTRATION NOTICE -->
+
+            <div class="privacy-note">
+
+                <strong>Project demonstration notice:</strong>
+
+                This form validates your entries and displays a
+                confirmation message in your browser. It does not
+                send emails, store feedback in a database or transmit
+                your information to a server.
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM CARD -->
+
+        <section class="bottom-card">
+
+            <h3>Thank You for Supporting Animal Welfare! ❤️</h3>
+
+            <p>
+                Every small act of kindness can make a difference.
+                Explore our pet profiles and discover their stories.
+            </p>
+
+            <a href="pets.html" class="button">
+                Meet Our Pets 🐶🐱
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>🐾 Paws & Hearts</h3>
+
+        <p>Every Paw Deserves Love ❤️</p>
+
+        <p>Rescue. Recover. Love. Repeat.</p>
+
+        <p>© 2026 Paws & Hearts | College Project</p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // STAR RATING SYSTEM
+
+        const starButtons = document.querySelectorAll(".star");
+
+        const ratingInput = document.getElementById("rating");
+
+        const ratingText = document.getElementById("ratingText");
+
+        const ratingMessages = {
+            1: "⭐ Needs significant improvement",
+            2: "⭐⭐ Could be better",
+            3: "⭐⭐⭐ Good experience",
+            4: "⭐⭐⭐⭐ Very good experience",
+            5: "⭐⭐⭐⭐⭐ Excellent experience!"
+        };
+
+        let selectedRating = 0;
+
+
+        function updateStars(rating) {
+
+            starButtons.forEach(function(star) {
+
+                const value = Number(star.dataset.rating);
+
+                star.classList.toggle(
+                    "selected",
+                    value <= rating
+                );
+
+                star.setAttribute(
+                    "aria-pressed",
+                    String(value === rating)
+                );
+
+            });
+
+        }
+
+
+        starButtons.forEach(function(star) {
+
+            star.addEventListener("click", function() {
+
+                selectedRating = Number(star.dataset.rating);
+
+                ratingInput.value = selectedRating;
+
+                ratingText.textContent =
+                    ratingMessages[selectedRating];
+
+                updateStars(selectedRating);
+
+            });
+
+        });
+
+
+        // FEEDBACK FORM SUBMISSION
+
+        const feedbackForm = document.getElementById("feedbackForm");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+        const thankYouText =
+            document.getElementById("thankYouText");
+
+
+        feedbackForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            if (selectedRating === 0) {
+
+                alert("Please select a star rating before submitting.");
+
+                document.getElementById("stars").scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                return;
+
+            }
+
+
+            const name = document.getElementById("name").value.trim();
+
+            const consent = document.getElementById("consent").checked;
+
+
+            if (!consent) {
+
+                alert(
+                    "Please confirm that you understand this project demonstration."
+                );
+
+                document.getElementById("consent").focus();
+
+                return;
+
+            }
+
+
+            if (name.length < 2) {
+
+                alert("Please enter a valid name.");
+
+                document.getElementById("name").focus();
+
+                return;
+
+            }
+
+
+            thankYouText.textContent =
+                "Thank you, " + name +
+                "! You gave our website " +
+                selectedRating + " out of 5 stars.";
+
+
+            successMessage.style.display = "block";
+
+
+            successMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        });
+
+
+        // RESET THE FORM
+
+        feedbackForm.addEventListener("reset", function() {
+
+            selectedRating = 0;
+
+            ratingInput.value = "";
+
+            updateStars(0);
+
+            ratingText.textContent =
+                "Select your rating from 1 to 5 stars.";
+
+            successMessage.style.display = "none";
+
+        });
+
+    </script>
+
+</body>
+
+</html>

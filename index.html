@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Paws & Hearts | Every Paw Deserves Love</title>
+
+    <style>
+        /* =========================
+           GENERAL STYLES
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            background-color: #fff8f5;
+            font-family: Arial, sans-serif;
+            color: #4b332d;
+        }
+
+        .homepage {
+            width: 100%;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+
+        /* =========================
+           HOMEPAGE IMAGE
+        ========================= */
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 1024px;
+            margin: 0 auto;
+            line-height: 0;
+        }
+
+        .homepage-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: none;
+        }
+
+
+        /* =========================
+           INVISIBLE NAVIGATION LINKS
+        ========================= */
+
+        .hotspot {
+            position: absolute;
+            display: block;
+            z-index: 2;
+            background: transparent;
+            cursor: pointer;
+            line-height: normal;
+        }
+
+        .hotspot:focus-visible {
+            outline: 3px solid #e76f83;
+            outline-offset: 2px;
+        }
+
+        /* Home */
+        .home-link {
+            top: 14.5%;
+            left: 54%;
+            width: 8%;
+            height: 3%;
+        }
+
+        /* Adopt */
+        .adopt-link {
+            top: 14.5%;
+            left: 64%;
+            width: 8%;
+            height: 3%;
+        }
+
+        /* About */
+        .about-link {
+            top: 14.5%;
+            left: 72%;
+            width: 9%;
+            height: 3%;
+        }
+
+        /* Questions */
+        .questions-link {
+            top: 14.5%;
+            left: 81%;
+            width: 11%;
+            height: 3%;
+        }
+
+        /* Contact */
+        .contact-link {
+            top: 14.5%;
+            left: 90%;
+            width: 9%;
+            height: 3%;
+        }
+
+        /* View Available Pets button */
+        .pets-link {
+            top: 47%;
+            left: 33%;
+            width: 34%;
+            height: 5%;
+        }
+
+
+        /* =========================
+           MEMORIAL SECTION
+        ========================= */
+
+        .memorial-section {
+            width: 92%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+
+            background: linear-gradient(
+                135deg,
+                #fff0e8,
+                #fbd5d0
+            );
+
+            border: 2px solid #e9a69a;
+            border-radius: 24px;
+
+            box-shadow: 0 5px 18px rgba(100, 55, 45, 0.12);
+        }
+
+
+        /* Cat photograph */
+        .memorial-photo {
+            flex: 0 0 38%;
+            min-width: 0;
+        }
+
+        .memorial-photo img {
+            display: block;
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            object-position: center;
+
+            border-radius: 18px;
+        }
+
+
+        /* Memorial text */
+        .memorial-content {
+            flex: 1;
+            min-width: 0;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .memorial-content h2 {
+            margin-top: 0;
+            margin-bottom: 15px;
+
+            color: #754638;
+            font-size: 30px;
+        }
+
+        .memorial-content p {
+            margin: 0 0 18px;
+
+            color: #4b332d;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+
+        /* Memorial button */
+        .memorial-button {
+            display: inline-block;
+            max-width: 100%;
+            margin-top: 8px;
+            padding: 14px 24px;
+
+            background: linear-gradient(
+                135deg,
+                #f56b7b,
+                #e94f68
+            );
+
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            line-height: 1.5;
+
+            border-radius: 30px;
+
+            box-shadow: 0 4px 10px rgba(180, 60, 80, 0.2);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .memorial-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(180, 60, 80, 0.25);
+        }
+
+        .memorial-button:focus-visible {
+            outline: 3px solid #754638;
+            outline-offset: 4px;
+        }
+
+
+        /* =========================
+           MEMORIAL FOOTER MESSAGE
+        ========================= */
+
+        .memorial-footer {
+            margin: 22px 0 0;
+            color: #956b61;
+            font-size: 14px;
+            font-style: italic;
+            text-align: center;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .memorial-section {
+                width: 92%;
+                margin: 25px auto;
+                padding: 18px;
+
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .memorial-photo {
+                width: 100%;
+                flex: auto;
+            }
+
+            .memorial-photo img {
+                height: 240px;
+            }
+
+            .memorial-content h2 {
+                font-size: 25px;
+            }
+
+            .memorial-content p {
+                font-size: 15px;
+            }
+
+            .memorial-button {
+                padding: 12px 18px;
+                font-size: 14px;
+            }
+
+            .memorial-footer {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 400px) {
+
+            .memorial-section {
+                width: 94%;
+                padding: 12px;
+            }
+
+            .memorial-content h2 {
+                font-size: 22px;
+            }
+
+            .memorial-photo img {
+                height: 200px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <main class="homepage">
+
+        <!-- =========================
+             EXISTING HOMEPAGE
+        ========================= -->
+
+        <div class="image-container">
+
+            <img
+                src="./images/homepage.png"
+                alt="Paws & Hearts pet adoption homepage"
+                class="homepage-image"
+            >
+
+            <!-- Home -->
+            <a
+                href="index.html"
+                class="hotspot home-link"
+                aria-label="Home"
+                title="Home"
+            ></a>
+
+            <!-- Adopt -->
+            <a
+                href="adopt.html"
+                class="hotspot adopt-link"
+                aria-label="Adopt"
+                title="Adopt"
+            ></a>
+
+            <!-- About -->
+            <a
+                href="about.html"
+                class="hotspot about-link"
+                aria-label="About"
+                title="About"
+            ></a>
+
+            <!-- Questions -->
+            <a
+                href="questions.html"
+                class="hotspot questions-link"
+                aria-label="Questions"
+                title="Questions"
+            ></a>
+
+            <!-- Contact -->
+            <a
+                href="contact.html"
+                class="hotspot contact-link"
+                aria-label="Contact"
+                title="Contact"
+            ></a>
+
+            <!-- View Available Pets -->
+            <a
+                href="pets.html"
+                class="hotspot pets-link"
+                aria-label="View Available Pets"
+                title="View Available Pets"
+            ></a>
+
+        </div>
+
+
+        <!-- =========================
+             FOREVER IN OUR HEARTS
+        ========================= -->
+
+        <section class="memorial-section">
+
+            <!-- Cat photograph -->
+            <div class="memorial-photo">
+
+              <div class="memorial-photo">
+
+    <img
+        src="./images/forever-pets.png"
+        alt="A tiny orange kitten playing with a toy"
+        loading="lazy"
+    >
+
+</div>
+
+
+            <!-- Memorial content -->
+            <div class="memorial-content">
+
+                <h2>
+                    🐾 Forever in Our Hearts ❤️
+                </h2>
+
+                <p>
+                    Every little life leaves a pawprint on our hearts.
+                    Inspired by a beloved cat we will never forget,
+                    we dream of giving every animal the love,
+                    safety, and happiness they deserve.
+                </p>
+
+                <a
+                    href="memorial.html"
+                    class="memorial-button"
+                >
+                    Read Our Story · Keep Their Memory Alive →
+                </a>
+
+                <p class="memorial-footer">
+                    "You may leave our sight, but never our hearts." ❤️
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,1059 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Frequently Asked Questions | Paws & Hearts</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #b75b45;
+            --accent: #e98269;
+            --background: #fff8f2;
+            --soft: #fff0e8;
+            --text: #49352d;
+            --muted: #80685d;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #ffb6a0;
+            padding: 22px 7%;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 5px 0 15px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            text-align: center;
+            padding: 60px 7% 45px;
+            background: linear-gradient(
+                135deg,
+                #fff0e8,
+                #ffe0d4
+            );
+        }
+
+        .hero .icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 38px;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 17px;
+        }
+
+        /* SEARCH */
+
+        .search-section {
+            max-width: 750px;
+            margin: -25px auto 35px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 17px 20px;
+            border: 2px solid #f1c9ba;
+            border-radius: 35px;
+            font-size: 16px;
+            outline: none;
+            background: white;
+            box-shadow: 0 5px 18px rgba(80, 50, 35, 0.08);
+        }
+
+        .search-box:focus {
+            border-color: var(--accent);
+        }
+
+        /* MAIN CONTENT */
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 10px 25px 60px;
+        }
+
+        .section-heading {
+            text-align: center;
+            color: var(--primary);
+            font-size: 29px;
+            margin: 30px 0 8px;
+        }
+
+        .section-description {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        /* FAQ CATEGORIES */
+
+        .category {
+            margin-bottom: 35px;
+        }
+
+        .category-title {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f2d5ca;
+        }
+
+        /* QUESTION CARDS */
+
+        .faq-item {
+            background: white;
+            border-radius: 13px;
+            margin-bottom: 13px;
+            border: 1px solid #f1ded5;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(80, 50, 35, 0.04);
+        }
+
+        .faq-question {
+            width: 100%;
+            border: none;
+            background: white;
+            color: var(--text);
+            padding: 19px 20px;
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .faq-question:hover {
+            background: #fffaf7;
+        }
+
+        .faq-question .symbol {
+            font-size: 23px;
+            color: var(--primary);
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .symbol {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 20px;
+            color: var(--muted);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-answer strong {
+            color: var(--primary);
+        }
+
+        /* NO RESULTS */
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 35px 15px;
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .no-results h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        /* CONTACT CARD */
+
+        .contact-card {
+            text-align: center;
+            background: #ffe5da;
+            padding: 35px 20px;
+            border-radius: 18px;
+            margin-top: 40px;
+        }
+
+        .contact-card h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            margin-bottom: 18px;
+        }
+
+        .button {
+            display: inline-block;
+            text-decoration: none;
+            background: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #ffb6a0;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        footer h3 {
+            margin-bottom: 5px;
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 45px 20px;
+            }
+
+            .hero h2 {
+                font-size: 29px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 10px 15px 40px;
+            }
+
+            .section-heading {
+                font-size: 25px;
+            }
+
+            .faq-question {
+                padding: 16px;
+                font-size: 15px;
+            }
+
+            .faq-answer {
+                padding: 0 16px 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>🐾 Paws & Hearts</h1>
+
+        <p>Every Paw Deserves Love ❤️</p>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="pets.html">Available Pets</a>
+            <a href="rescue.html">Rescue Stories</a>
+            <a href="adopt.html">Adopt</a>
+            <a href="feedback.html">Feedback</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="icon">🐶🐱</div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <p>
+            Have questions about adopting a pet?
+            We are here to help you understand the adoption process,
+            pet care, rescue stories, and everything you need to know
+            before welcoming a new family member.
+        </p>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-section">
+
+        <input
+            type="text"
+            id="searchInput"
+            class="search-box"
+            placeholder="🔍 Search your question..."
+            aria-label="Search frequently asked questions"
+        >
+
+    </div>
+
+
+    <!-- FAQ CONTENT -->
+
+    <main class="container">
+
+        <h2 class="section-heading">
+            Let's Find Your Answers ❤️
+        </h2>
+
+        <p class="section-description">
+            Explore the questions below to learn more about Paws & Hearts.
+        </p>
+
+
+        <div id="noResults" class="no-results">
+
+            <h3>🐾 No Questions Found</h3>
+
+            <p>
+                We couldn't find a matching question.
+                Try searching with different words.
+            </p>
+
+        </div>
+
+
+        <!-- CATEGORY 1 -->
+
+        <section class="category">
+
+            <h3 class="category-title">
+                🏡 About Pet Adoption
+            </h3>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>1. What is pet adoption?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Pet adoption means welcoming an animal into your
+                        family and taking responsibility for its care.
+                        Instead of purchasing a pet, you provide a home
+                        to an animal that needs one.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>2. Why should I adopt a pet?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Adoption gives an animal an opportunity to live
+                        in a safe and caring environment. It also
+                        encourages responsible pet ownership and helps
+                        raise awareness about animal welfare.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>3. Can beginners adopt a pet?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Yes! Beginners can adopt a pet if they understand
+                        its needs and are ready to provide food, shelter,
+                        exercise, veterinary care, patience and affection.
+                        Choosing a pet whose needs match your lifestyle
+                        is important.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>4. How do I choose the right pet?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Consider your daily schedule, available space,
+                        budget, experience and the animal's temperament.
+                        Puppies and kittens often require considerable
+                        supervision, while adult animals may have more
+                        established personalities.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>5. Can I adopt a cat instead of a dog?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Absolutely! Paws & Hearts features both cats and
+                        dogs. Cats need appropriate food, clean litter,
+                        safe surroundings, enrichment and veterinary care.
+                        Dogs also need exercise, training, companionship
+                        and suitable daily activities.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORY 2 -->
+
+        <section class="category">
+
+            <h3 class="category-title">
+                🐾 Available Pets
+            </h3>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>6. How many pets are listed on this website?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        The college project displays 20 sample pets:
+                        10 cats and 10 dogs. The collection includes
+                        adult cats, kittens, adult dogs and puppies.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>7. Can I see a pet's photograph and details?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Yes. Visit the Available Pets page to explore
+                        pet cards containing details such as name, breed,
+                        age, gender, personality and sample adoption fee.
+                        The displayed photographs are illustrative and
+                        may not depict the exact listed animal.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>8. Can I filter cats, kittens, dogs and puppies?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        The website's pet listing can provide category
+                        filters so visitors can browse adult cats,
+                        kittens, adult dogs and puppies separately.
+                        Use the available category buttons on the
+                        Available Pets page.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>9. Are all the pets the same breed?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        No. The sample collection contains several
+                        breeds and mixed-breed animals. Breed descriptions
+                        are provided to make browsing informative,
+                        although appearance alone cannot reliably confirm
+                        an animal's breed.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>10. Are the listed pets actually available for adoption?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        This website is a college project demonstration.
+                        The listed animals and their profiles are sample
+                        content. Actual availability, identity, health
+                        records and adoption arrangements must be verified
+                        with a genuine rescue organisation.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORY 3 -->
+
+        <section class="category">
+
+            <h3 class="category-title">
+                💰 Adoption Fees and Process
+            </h3>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>11. What is the adoption fee?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Each pet profile displays a sample adoption fee
+                        below ₹3,000 for this college project.
+                        These amounts are illustrative values, not
+                        verified charges from a real shelter.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>12. Does the adoption fee cover every expense?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Not necessarily. In a real adoption, the
+                        arrangement depends on the organisation.
+                        Food, grooming, vaccinations, parasite prevention,
+                        medical treatment and other continuing expenses
+                        may need to be budgeted separately.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>13. How can I begin the adoption process?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Browse the Available Pets page, choose an animal,
+                        read its profile and rescue story, and use the
+                        Adopt button to visit the adoption form.
+                        In a real adoption, the rescue organisation
+                        would then verify details and explain its
+                        application and approval process.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>14. Can I adopt more than one pet?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Adopting more than one pet may be possible,
+                        but each animal needs sufficient attention,
+                        space, food and veterinary care. Their
+                        compatibility should also be considered.
+                        A genuine rescue organisation may have its
+                        own adoption requirements.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>15. Can I return a pet if I change my mind?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Adoption should be treated as a long-term
+                        responsibility. If a serious problem arises,
+                        contact the original rescue organisation
+                        immediately and discuss safe options.
+                        Never abandon or harm an animal.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORY 4 -->
+
+        <section class="category">
+
+            <h3 class="category-title">
+                🩺 Rescue Stories and Pet Health
+            </h3>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>16. What is a rescue story?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        A rescue story describes an animal's fictional
+                        background in this project, its physical condition,
+                        the care it receives, its recovery journey and
+                        its current status.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>17. How can I read an individual pet's story?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Open the Available Pets page and select the
+                        rescue-story link associated with a particular
+                        animal. The rescue page uses the selected pet's
+                        ID to display its individual story.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>18. Are the injuries and rescue stories real?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        No. The rescue histories, physical conditions,
+                        treatment plans and recovery statuses are
+                        fictional examples created for this college
+                        project. The photographs are illustrative
+                        animal images, not verified injury photographs
+                        or actual veterinary records.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>19. Who should treat an injured animal?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        A qualified veterinarian should examine and
+                        treat an injured or unwell animal. Avoid giving
+                        human medicines or applying unapproved treatments.
+                        Seek prompt professional help for serious wounds,
+                        breathing difficulties, severe weakness or other
+                        urgent symptoms.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>20. How can I help animals without adopting them?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        You can support reputable animal welfare groups,
+                        volunteer when appropriate, donate approved
+                        supplies, share verified adoption notices
+                        or help connect animals with responsible
+                        rescue organisations.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CATEGORY 5 -->
+
+        <section class="category">
+
+            <h3 class="category-title">
+                🥣 Pet Care and Responsibilities
+            </h3>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>21. What should I prepare before adopting a pet?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Prepare suitable food, fresh water, a safe
+                        sleeping area, appropriate bowls, cleaning
+                        supplies and necessary enrichment.
+                        Cats also need litter facilities, while dogs
+                        need suitable exercise and training.
+                        Arrange veterinary care before bringing
+                        your new companion home.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>22. How often should my pet visit a veterinarian?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        The schedule depends on the animal's age,
+                        health and medical history. Puppies and kittens
+                        need age-appropriate preventive care, while
+                        adult animals also benefit from routine
+                        check-ups. Ask a veterinarian to recommend
+                        an appropriate schedule.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>23. What if my adopted pet is frightened?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Give your pet a quiet, safe space and allow it
+                        time to adjust. Use gentle handling, predictable
+                        routines and positive reinforcement.
+                        Avoid forcing interactions, and consult a
+                        veterinarian or qualified behaviour professional
+                        if the fear is severe or persistent.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <button class="faq-question" aria-expanded="false">
+                    <span>24. Is adopting a pet a lifelong responsibility?</span>
+                    <span class="symbol">+</span>
+                </button>
+
+                <div class="faq-answer">
+                    <p>
+                        Yes. Pets depend on their caregivers for
+                        daily care, safety, companionship and
+                        veterinary attention throughout their lives.
+                        Before adopting, consider whether you can
+                        meet those needs over the long term.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section class="contact-card">
+
+            <h2>Still Have Questions? 🐾</h2>
+
+            <p>
+                Explore our pet collection and discover the
+                fictional rescue journeys behind each profile.
+            </p>
+
+            <a href="pets.html" class="button">
+                Explore Our Pets ❤️
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>🐾 Paws & Hearts</h3>
+
+        <p>Every Paw Deserves Love ❤️</p>
+
+        <p>
+            Making the world kinder, one paw at a time.
+        </p>
+
+        <p>
+            © 2026 Paws & Hearts | College Project
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        // Expand or collapse FAQ answers.
+
+        const questions = document.querySelectorAll(".faq-question");
+
+        questions.forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const item = button.closest(".faq-item");
+                const isOpen = item.classList.contains("active");
+
+                item.classList.toggle("active");
+
+                button.setAttribute(
+                    "aria-expanded",
+                    String(!isOpen)
+                );
+
+            });
+
+        });
+
+
+        // Search questions and answers.
+
+        const searchInput = document.getElementById("searchInput");
+        const faqItems = document.querySelectorAll(".faq-item");
+        const categories = document.querySelectorAll(".category");
+        const noResults = document.getElementById("noResults");
+
+        searchInput.addEventListener("input", function() {
+
+            const searchText = searchInput.value
+                .trim()
+                .toLowerCase();
+
+            let visibleCount = 0;
+
+            faqItems.forEach(function(item) {
+
+                const searchableText = item.textContent.toLowerCase();
+
+                const matches = searchableText.includes(searchText);
+
+                item.style.display = matches ? "block" : "none";
+
+                if (matches) {
+                    visibleCount++;
+                }
+
+            });
+
+            // Hide category headings when their questions are hidden.
+
+            categories.forEach(function(category) {
+
+                const visibleItems = Array.from(
+                    category.querySelectorAll(".faq-item")
+                ).filter(function(item) {
+
+                    return item.style.display !== "none";
+
+                });
+
+                category.style.display =
+                    visibleItems.length > 0 ? "block" : "none";
+
+            });
+
+            noResults.style.display =
+                visibleCount === 0 ? "block" : "none";
+
+        });
+
+    </script>
+
+</body>
+
+</html>
